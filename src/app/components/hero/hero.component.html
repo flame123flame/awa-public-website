@@ -1,0 +1,92 @@
+<!-- hero.component.html - Subtle Green Theme -->
+<section id="home" class="hero-section">
+  
+  <!-- Subtle Green Background -->
+  <div class="hero-background">
+    <!-- Gradient Background -->
+    <div class="subtle-gradient"></div>
+    
+    <!-- Dot Pattern -->
+    <div class="dot-pattern"></div>
+    
+    <!-- Floating Blobs -->
+    <div class="floating-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    
+    <!-- Gentle Shapes -->
+    <div class="gentle-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="hero-content">
+    
+    <!-- Badge -->
+    <div class="hero-badge" 
+         [ngClass]="{'show': isVisible}">
+      <div class="badge-glass">
+        <span class="badge-icon">{{ heroContent.badge.icon }}</span>
+        <span class="badge-text">{{ heroContent.badge.text }}</span>
+      </div>
+    </div>
+
+    <!-- Titles -->
+    <div class="hero-titles"
+         [ngClass]="{'show': isVisible}">
+      <h1 class="main-title">
+        <span class="title-gradient">{{ heroContent.mainTitle }}</span>
+        <span class="title-dark">{{ heroContent.subTitle }}</span>
+      </h1>
+    </div>
+
+    <!-- Description -->
+    <p class="hero-description"
+       [ngClass]="{'show': isVisible}">
+      {{ heroContent.description }}
+    </p>
+
+    <!-- Buttons -->
+    <div class="hero-buttons"
+         [ngClass]="{'show': isVisible}">
+      <button (click)="startProject()" 
+              class="btn-primary-green">
+        {{ heroContent.buttons.primary }}
+      </button>
+      
+      <button (click)="viewPortfolio()" 
+              class="btn-secondary-glass">
+        {{ heroContent.buttons.secondary }}
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats" 
+         *ngIf="heroContent.stats.length > 0"
+         [ngClass]="{'show': isVisible}">
+      <div *ngFor="let stat of heroContent.stats; trackBy: trackByStatIndex" 
+           class="stat-card">
+        <div class="stat-number">{{ stat.number }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator"
+       [ngClass]="{'show': isVisible}">
+    <div class="scroll-text">เลื่อนลงเพื่อดูเพิ่มเติม</div>
+    <div class="scroll-animation">
+      <div class="scroll-wheel">
+        <div class="wheel-dot"></div>
+      </div>
+    </div>
+  </div>
+
+</section>

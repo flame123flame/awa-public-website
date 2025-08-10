@@ -1,0 +1,600 @@
+<!-- careers.component.html - Complete Version -->
+<section id="careers" class="relative bg-white overflow-hidden">
+  
+  <!-- Careers Hero -->
+  <div class="section-padding bg-gradient-to-br from-gray-50 to-white">
+    <div class="container-custom">
+      <div class="text-center space-y-6 mb-16">
+        <div class="inline-flex items-center px-4 py-2 bg-awa-primary/10 rounded-full border border-awa-primary/20">
+          <span class="w-2 h-2 bg-awa-primary rounded-full mr-3"></span>
+          <span class="text-sm font-medium text-awa-primary">Join Our Team</span>
+        </div>
+        
+        <h2 class="text-4xl lg:text-6xl font-bold text-awa-dark leading-tight">
+          <span class="block">ร่วมงานกับเรา</span>
+          <span class="block text-awa-primary">สร้างอนาคตด้วยกัน</span>
+        </h2>
+        
+        <p class="text-xl text-awa-gray max-w-3xl mx-auto leading-relaxed">
+          เข้าร่วมทีมงานที่มีความหลงใหลในเทคโนโลยีและพร้อมสร้างสรรค์สิ่งดีๆ ให้กับสังคม
+        </p>
+      </div>
+      
+      <!-- Quick Stats -->
+      <div class="grid md:grid-cols-4 gap-6 mb-16">
+        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
+          <div class="text-3xl font-bold text-awa-primary">{{ openPositions.length }}</div>
+          <div class="text-sm text-awa-gray">ตำแหน่งเปิดรับ</div>
+        </div>
+        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
+          <div class="text-3xl font-bold text-awa-primary">30+</div>
+          <div class="text-sm text-awa-gray">ทีมงานคุณภาพ</div>
+        </div>
+        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
+          <div class="text-3xl font-bold text-awa-primary">4.9/5</div>
+          <div class="text-sm text-awa-gray">ความพึงพอใจ</div>
+        </div>
+        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
+          <div class="text-3xl font-bold text-awa-primary">95%</div>
+          <div class="text-sm text-awa-gray">อัตราคงอยู่</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Jobs -->
+  <div class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center space-y-6 mb-16">
+        <h3 class="text-3xl lg:text-4xl font-bold text-awa-dark">ตำแหน่งเด่น</h3>
+        <p class="text-lg text-awa-gray max-w-2xl mx-auto">ตำแหน่งงานที่เราต้องการมากที่สุดในขณะนี้</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div *ngFor="let job of getFeaturedJobs(); let i = index" 
+             class="group p-8 bg-gradient-to-br from-awa-primary/5 to-emerald-50/50 rounded-3xl border border-awa-primary/20 hover:shadow-awa-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer"
+             [style.animation-delay]="i * 0.2 + 's'"
+             [ngClass]="{'animate-slide-up-custom': isVisible}"
+             (click)="openJobModal(job)">
+          
+          <!-- Job Header -->
+          <div class="flex items-start justify-between mb-6">
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-awa-dark group-hover:text-awa-primary transition-colors duration-300">
+                {{ job.titleTh }}
+              </h3>
+              <p class="text-awa-primary font-medium">{{ job.title }}</p>
+              <div class="flex items-center space-x-4 text-sm text-awa-gray">
+                <span class="flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  {{ job.location }}
+                </span>
+                <span class="flex items-center">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  {{ job.type }}
+                </span>
+              </div>
+            </div>
+            
+            <!-- Badges -->
+            <div class="flex flex-col space-y-2">
+              <div class="px-3 py-1 bg-awa-primary text-white rounded-full text-xs font-medium text-center">
+                เด่น
+              </div>
+              <div *ngIf="job.urgent" class="px-3 py-1 bg-red-500 text-white rounded-full text-xs font-medium text-center">
+                ด่วน
+              </div>
+            </div>
+          </div>
+          
+          <!-- Job Info -->
+          <div class="space-y-4">
+            <p class="text-awa-gray leading-relaxed">{{ job.description }}</p>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1">
+                <div class="text-sm text-awa-gray">ประสบการณ์</div>
+                <div class="font-semibold text-awa-dark">{{ job.experience }}</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-sm text-awa-gray">เงินเดือน</div>
+                <div class="font-semibold text-awa-primary">{{ job.salary }}</div>
+              </div>
+            </div>
+            
+            <div class="flex justify-between items-center pt-4">
+              <div class="text-xs text-awa-gray">
+                โพสต์เมื่อ {{ formatDate(job.posted) }}
+              </div>
+              <button class="btn-primary-gradient text-sm">
+                <span class="flex items-center space-x-2">
+                  <span>ดูรายละเอียด</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All Open Positions -->
+  <div class="section-padding bg-gray-50">
+    <div class="container-custom">
+      <div class="space-y-12">
+        
+        <!-- Filter Tabs -->
+        <div class="text-center space-y-8">
+          <h3 class="text-3xl lg:text-4xl font-bold text-awa-dark">ตำแหน่งงานทั้งหมด</h3>
+          
+          <div class="flex flex-wrap justify-center gap-4">
+            <button *ngFor="let category of jobCategories"
+                    (click)="setFilter(category.id)"
+                    class="px-6 py-3 rounded-xl font-medium transition-all duration-300 group"
+                    [ngClass]="{
+                      'bg-awa-primary text-white shadow-awa-md': category.id === activeFilter,
+                      'bg-white text-awa-gray hover:bg-awa-primary/10 hover:text-awa-primary': category.id !== activeFilter
+                    }">
+              <span class="flex items-center space-x-2">
+                <span>{{ category.label }}</span>
+                <span class="text-sm opacity-75">({{ category.count }})</span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Jobs List -->
+        <div class="space-y-6">
+          <div *ngFor="let job of getFilteredJobs(); let i = index" 
+               class="group p-6 bg-white rounded-2xl shadow-awa-sm hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1 cursor-pointer border border-gray-100"
+               [style.animation-delay]="i * 0.1 + 's'"
+               [ngClass]="{'animate-slide-up-custom': isVisible}"
+               (click)="openJobModal(job)">
+            
+            <div class="flex items-center justify-between">
+              <!-- Job Info -->
+              <div class="flex-1 space-y-3">
+                <div class="flex items-start justify-between">
+                  <div class="space-y-1">
+                    <h4 class="text-xl font-bold text-awa-dark group-hover:text-awa-primary transition-colors duration-300">
+                      {{ job.titleTh }}
+                    </h4>
+                    <p class="text-awa-primary font-medium">{{ job.title }}</p>
+                  </div>
+                  
+                  <!-- Badges -->
+                  <div class="flex space-x-2">
+                    <div *ngIf="job.featured" class="px-3 py-1 bg-awa-primary/10 text-awa-primary rounded-full text-xs font-medium">
+                      เด่น
+                    </div>
+                    <div *ngIf="job.urgent" class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-medium">
+                      ด่วน
+                    </div>
+                    <div class="px-3 py-1 bg-gray-100 text-awa-gray rounded-full text-xs font-medium">
+                      {{ getCategoryLabel(job.department) }}
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Job Meta -->
+                <div class="flex items-center space-x-6 text-sm text-awa-gray">
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    {{ job.location }}
+                  </span>
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    {{ job.type }}
+                  </span>
+                  <span class="flex items-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    {{ job.experience }}
+                  </span>
+                  <span class="flex items-center font-semibold text-awa-primary">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                    </svg>
+                    {{ job.salary }}
+                  </span>
+                </div>
+                
+                <!-- Description -->
+                <p class="text-awa-gray text-sm leading-relaxed">{{ job.description }}</p>
+              </div>
+              
+              <!-- Action Button -->
+              <div class="ml-6">
+                <div class="w-12 h-12 bg-awa-primary/10 rounded-full flex items-center justify-center group-hover:bg-awa-primary group-hover:text-white transition-all duration-300">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Company Benefits -->
+  <div class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center space-y-6 mb-16">
+        <div class="inline-flex items-center px-4 py-2 bg-awa-primary/10 rounded-full border border-awa-primary/20">
+          <span class="w-2 h-2 bg-awa-primary rounded-full mr-3"></span>
+          <span class="text-sm font-medium text-awa-primary">Benefits</span>
+        </div>
+        <h3 class="text-3xl lg:text-4xl font-bold text-awa-dark">สวัสดิการและผลประโยชน์</h3>
+        <p class="text-lg text-awa-gray max-w-2xl mx-auto">สิ่งดีๆ ที่รอคุณอยู่เมื่อมาร่วมงานกับเรา</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let benefit of companyBenefits; let i = index" 
+             class="group p-8 bg-gradient-to-br from-gray-50 to-white rounded-3xl border border-gray-100 hover:border-awa-primary/30 hover:shadow-awa-lg transition-all duration-300 hover:-translate-y-2"
+             [style.animation-delay]="i * 0.1 + 's'"
+             [ngClass]="{'animate-slide-up-custom': isVisible}">
+          <div class="space-y-6">
+            <div class="text-5xl group-hover:scale-110 transition-transform duration-300">
+              {{ benefit.icon }}
+            </div>
+            <div class="space-y-3">
+              <h4 class="text-xl font-bold text-awa-dark group-hover:text-awa-primary transition-colors duration-300">
+                {{ benefit.title }}
+              </h4>
+              <p class="text-awa-gray leading-relaxed">{{ benefit.description }}</p>
+              <div class="space-y-2">
+                <div *ngFor="let detail of benefit.details" 
+                     class="flex items-center space-x-2 text-sm text-awa-gray">
+                  <div class="w-1.5 h-1.5 bg-awa-primary rounded-full"></div>
+                  <span>{{ detail }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Process -->
+  <div class="section-padding bg-gradient-to-br from-awa-primary/5 to-emerald-50/50">
+    <div class="container-custom">
+      <div class="text-center space-y-6 mb-16">
+        <div class="inline-flex items-center px-4 py-2 bg-awa-primary/10 rounded-full border border-awa-primary/20">
+          <span class="w-2 h-2 bg-awa-primary rounded-full mr-3"></span>
+          <span class="text-sm font-medium text-awa-primary">Process</span>
+        </div>
+        <h3 class="text-3xl lg:text-4xl font-bold text-awa-dark">ขั้นตอนการสมัครงาน</h3>
+        <p class="text-lg text-awa-gray max-w-2xl mx-auto">กระบวนการคัดเลือกที่โปร่งใสและเป็นมิตร</p>
+      </div>
+      
+      <div class="relative">
+        <!-- Process Line -->
+        <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-awa-primary/20 transform -translate-y-1/2"></div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
+          <div *ngFor="let step of applicationProcess; let i = index" 
+               class="relative text-center group"
+               [style.animation-delay]="i * 0.2 + 's'"
+               [ngClass]="{'animate-slide-up-custom': isVisible}">
+            
+            <!-- Step Number -->
+            <div class="relative mx-auto w-16 h-16 bg-awa-primary rounded-full flex items-center justify-center text-white font-bold text-lg mb-6 group-hover:scale-110 transition-transform duration-300 shadow-awa-md">
+              {{ step.step }}
+              <div class="absolute inset-0 bg-awa-primary rounded-full animate-ping opacity-20"></div>
+            </div>
+            
+            <!-- Step Content -->
+            <div class="space-y-4">
+              <div class="text-3xl group-hover:scale-110 transition-transform duration-300">
+                {{ step.icon }}
+              </div>
+              <h4 class="text-lg font-bold text-awa-dark group-hover:text-awa-primary transition-colors duration-300">
+                {{ step.title }}
+              </h4>
+              <p class="text-awa-gray text-sm leading-relaxed">{{ step.description }}</p>
+              <div class="inline-flex items-center px-3 py-1 bg-awa-primary/10 text-awa-primary rounded-full text-xs font-medium">
+                {{ step.duration }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Employee Testimonials -->
+  <div class="section-padding bg-white">
+    <div class="container-custom">
+      <div class="text-center space-y-6 mb-16">
+        <h3 class="text-3xl lg:text-4xl font-bold text-awa-dark">เสียงจากพนักงาน</h3>
+        <p class="text-lg text-awa-gray max-w-2xl mx-auto">ฟังประสบการณ์จากเพื่อนร่วมงานที่อยู่กับเรา</p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div *ngFor="let testimonial of employeeTestimonials; let i = index" 
+             class="bg-white p-8 rounded-3xl shadow-awa-md hover:shadow-awa-lg transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+             [style.animation-delay]="i * 0.2 + 's'"
+             [ngClass]="{'animate-slide-up-custom': isVisible}">
+          <div class="space-y-6">
+            
+            <!-- Rating Stars -->
+            <div class="flex space-x-1">
+              <span *ngFor="let star of [1,2,3,4,5]" 
+                    class="text-yellow-400 text-xl">
+                ⭐
+              </span>
+            </div>
+            
+            <!-- Testimonial Content -->
+            <blockquote class="text-awa-gray leading-relaxed italic">
+              "{{ testimonial.comment }}"
+            </blockquote>
+            
+            <!-- Employee Info -->
+            <div class="flex items-center space-x-4 pt-4 border-t border-gray-100">
+              <div class="text-3xl">{{ testimonial.avatar }}</div>
+              <div class="space-y-1">
+                <div class="font-semibold text-awa-dark">{{ testimonial.name }}</div>
+                <div class="text-sm text-awa-gray">{{ testimonial.position }}</div>
+                <div class="text-sm text-awa-primary font-medium">{{ testimonial.duration }} ที่ AWA</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="section-padding bg-gradient-to-br from-awa-primary/5 to-emerald-50/50">
+    <div class="container-custom text-center">
+      <div class="space-y-8 max-w-4xl mx-auto">
+        
+        <!-- CTA Content -->
+        <div class="space-y-6">
+          <h3 class="text-4xl lg:text-5xl font-bold text-awa-dark">
+            พร้อมที่จะเป็นส่วนหนึ่งของเรา?
+          </h3>
+          <p class="text-xl text-awa-gray leading-relaxed">
+            ส่ง Resume และมาร่วมสร้างอนาคตที่ดีในด้านเทคโนโลยีไปด้วยกัน
+          </p>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <button (click)="scrollToSection('contact')" 
+                  class="btn-primary-gradient group">
+            <span class="flex items-center space-x-2">
+              <span>ส่ง Resume</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </span>
+          </button>
+          
+          <button (click)="scrollToSection('contact')" 
+                  class="btn-secondary group">
+            <span class="flex items-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+              <span>สอบถามเพิ่มเติม</span>
+            </span>
+          </button>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="pt-8 border-t border-awa-primary/20">
+          <div class="grid md:grid-cols-3 gap-6 text-center">
+            <div class="space-y-2 hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+              <div class="text-2xl">📧</div>
+              <div class="text-sm text-awa-gray">ส่ง Resume</div>
+              <div class="font-semibold text-awa-dark">hr-awa.co.th</div>
+            </div>
+            <div class="space-y-2 hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+              <div class="text-2xl">📞</div>
+              <div class="text-sm text-awa-gray">โทรสอบถาม</div>
+              <div class="font-semibold text-awa-dark">+66 2 xxx xxxx</div>
+            </div>
+            <div class="space-y-2 hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
+              <div class="text-2xl">💼</div>
+              <div class="text-sm text-awa-gray">ดูตำแหน่งเพิ่ม</div>
+              <div class="font-semibold text-awa-dark">LinkedIn</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Job Detail Modal -->
+  <div *ngIf="showJobModal && selectedJob" 
+       class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+       (click)="closeJobModal()">
+    
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+         (click)="$event.stopPropagation()">
+      
+      <!-- Modal Header -->
+      <div class="relative p-8 border-b border-gray-100">
+        <button (click)="closeJobModal()" 
+                class="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-300">
+          <svg class="w-6 h-6 text-awa-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <div *ngIf="selectedJob.featured" class="px-3 py-1 bg-awa-primary/10 text-awa-primary rounded-full text-sm font-medium">
+              ตำแหน่งเด่น
+            </div>
+            <div *ngIf="selectedJob.urgent" class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-medium">
+              รีบด่วน
+            </div>
+            <div class="px-3 py-1 bg-gray-100 text-awa-gray rounded-full text-sm">
+              {{ getCategoryLabel(selectedJob.department) }}
+            </div>
+          </div>
+          
+          <h2 class="text-3xl lg:text-4xl font-bold text-awa-dark">
+            {{ selectedJob.titleTh }}
+          </h2>
+          
+          <p class="text-xl text-awa-primary font-medium">
+            {{ selectedJob.title }}
+          </p>
+          
+          <div class="flex items-center space-x-6 text-awa-gray">
+            <span class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              {{ selectedJob.location }}
+            </span>
+            <span class="flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              {{ selectedJob.type }}
+            </span>
+            <span class="flex items-center font-semibold text-awa-primary">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+              {{ selectedJob.salary }}
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Modal Content -->
+      <div class="p-8 space-y-8">
+        
+        <!-- Job Description -->
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold text-awa-dark">รายละเอียดงาน</h3>
+          <p class="text-awa-gray leading-relaxed text-lg">{{ selectedJob.description }}</p>
+        </div>
+        
+        <!-- Responsibilities & Requirements -->
+        <div class="grid md:grid-cols-2 gap-8">
+          
+          <!-- Responsibilities -->
+          <div class="space-y-4">
+            <h3 class="text-xl font-bold text-awa-dark">หน้าที่ความรับผิดชอบ</h3>
+            <div class="space-y-3">
+              <div *ngFor="let responsibility of selectedJob.responsibilities" 
+                   class="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-awa-primary/5 transition-colors duration-300">
+                <div class="w-2 h-2 bg-awa-primary rounded-full mt-2 flex-shrink-0"></div>
+                <span class="text-awa-gray">{{ responsibility }}</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Requirements -->
+          <div class="space-y-4">
+            <h3 class="text-xl font-bold text-awa-dark">คุณสมบัติที่ต้องการ</h3>
+            <div class="space-y-3">
+              <div *ngFor="let requirement of selectedJob.requirements" 
+                   class="flex items-start space-x-3 p-3 bg-gray-50 rounded-xl hover:bg-emerald-50 transition-colors duration-300">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
+                <span class="text-awa-gray">{{ requirement }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Benefits -->
+        <div class="space-y-4">
+          <h3 class="text-xl font-bold text-awa-dark">สวัสดิการและผลประโยชน์</h3>
+          <div class="grid md:grid-cols-2 gap-3">
+            <div *ngFor="let benefit of selectedJob.benefits" 
+                 class="flex items-center space-x-3 p-3 bg-gradient-to-r from-awa-primary/5 to-emerald-50/50 rounded-xl hover:from-awa-primary/10 hover:to-emerald-50 transition-all duration-300">
+              <div class="w-2 h-2 bg-awa-primary rounded-full"></div>
+              <span class="text-awa-gray">{{ benefit }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Job Info Cards -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 bg-gradient-to-br from-awa-primary/5 to-emerald-50/50 rounded-2xl hover:shadow-awa-md transition-all duration-300">
+            <div class="space-y-2">
+              <h4 class="font-semibold text-awa-dark">ประสบการณ์</h4>
+              <div class="text-2xl font-bold text-awa-primary">{{ selectedJob.experience }}</div>
+            </div>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-100 hover:shadow-awa-md transition-all duration-300">
+            <div class="space-y-2">
+              <h4 class="font-semibold text-awa-dark">รูปแบบงาน</h4>
+              <div class="text-2xl font-bold text-awa-primary">{{ selectedJob.type }}</div>
+            </div>
+          </div>
+          
+          <div class="p-6 bg-gradient-to-br from-emerald-50/50 to-awa-primary/5 rounded-2xl hover:shadow-awa-md transition-all duration-300">
+            <div class="space-y-2">
+              <h4 class="font-semibold text-awa-dark">โพสต์เมื่อ</h4>
+              <div class="text-lg font-bold text-awa-primary">{{ formatDate(selectedJob.posted) }}</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-100">
+          <button (click)="scrollToSection('contact'); closeJobModal()" 
+                  class="btn-primary-gradient group flex-1">
+            <span class="flex items-center justify-center space-x-2">
+              <span>สมัครตำแหน่งนี้</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </span>
+          </button>
+          
+          <button (click)="scrollToSection('contact'); closeJobModal()" 
+                  class="btn-secondary group flex-1">
+            <span class="flex items-center justify-center space-x-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+              </svg>
+              <span>สอบถามเพิ่มเติม</span>
+            </span>
+          </button>
+        </div>
+        
+        <!-- Additional Info -->
+        <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border border-gray-100">
+          <div class="text-center space-y-3">
+            <h4 class="text-lg font-semibold text-awa-dark">สนใจตำแหน่งนี้?</h4>
+            <p class="text-awa-gray text-sm">ส่ง Resume และ Portfolio มาที่ hr-awa.co.th พร้อมระบุตำแหน่งที่สนใจ</p>
+            <div class="flex items-center justify-center space-x-4 text-sm text-awa-gray">
+              <span>📧 hr-awa.co.th</span>
+              <span>📞 +66 2 xxx xxxx</span>
+              <span>💼 LinkedIn: AWA Solutions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,591 @@
+/* careers.component.scss */
+
+// Featured job cards
+.featured-jobs {
+  .job-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        transparent,
+        rgba(5, 150, 105, 0.1),
+        transparent
+      );
+      transition: left 0.8s;
+    }
+    
+    &:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(5, 150, 105, 0.15);
+      
+      &::before {
+        left: 100%;
+      }
+      
+      .job-title {
+        color: theme('colors.awa-primary');
+      }
+      
+      .job-salary {
+        transform: scale(1.05);
+        color: theme('colors.awa-primary-light');
+      }
+    }
+    
+    .job-badge {
+      backdrop-filter: blur(8px);
+      animation: badge-glow 3s ease-in-out infinite;
+    }
+    
+    .urgent-badge {
+      animation: urgent-pulse 2s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes badge-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(5, 150, 105, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(5, 150, 105, 0.6);
+  }
+}
+
+@keyframes urgent-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+  }
+}
+
+// Job filter tabs
+.job-filters {
+  .filter-tab {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transition: left 0.6s;
+    }
+    
+    &:hover::before {
+      left: 100%;
+    }
+    
+    &.active {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid theme('colors.awa-primary');
+      }
+    }
+  }
+}
+
+// Job list items
+.job-list {
+  .job-item {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(5, 150, 105, 0.1);
+      border-color: theme('colors.awa-primary');
+      
+      .job-title {
+        color: theme('colors.awa-primary');
+      }
+      
+      .job-action {
+        background-color: theme('colors.awa-primary');
+        color: white;
+        transform: scale(1.1);
+      }
+      
+      .job-badge {
+        transform: scale(1.05);
+      }
+    }
+    
+    .job-meta {
+      .meta-item {
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: theme('colors.awa-primary');
+          transform: translateX(2px);
+        }
+      }
+    }
+  }
+}
+
+// Benefits section
+.benefits-section {
+  .benefit-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(5, 150, 105, 0.1),
+        transparent
+      );
+      transition: left 0.8s;
+    }
+    
+    &:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 20px 40px rgba(5, 150, 105, 0.15);
+      border-color: theme('colors.awa-primary');
+      
+      &::before {
+        left: 100%;
+      }
+      
+      .benefit-icon {
+        transform: scale(1.2) rotate(5deg);
+      }
+      
+      .benefit-title {
+        color: theme('colors.awa-primary');
+      }
+      
+      .benefit-detail {
+        background-color: rgba(5, 150, 105, 0.05);
+        transform: translateX(2px);
+      }
+    }
+  }
+}
+
+// Application process
+.process-timeline {
+  .process-step {
+    .step-number {
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120%;
+        height: 120%;
+        background: rgba(5, 150, 105, 0.2);
+        border-radius: 50%;
+        animation: pulse-process 3s infinite;
+      }
+    }
+    
+    &:hover {
+      .step-number {
+        transform: scale(1.1);
+        box-shadow: 0 10px 25px rgba(5, 150, 105, 0.4);
+      }
+      
+      .step-icon {
+        transform: scale(1.2);
+      }
+      
+      .step-title {
+        color: theme('colors.awa-primary');
+      }
+    }
+  }
+}
+
+@keyframes pulse-process {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+}
+
+// Employee testimonials
+.testimonials {
+  .testimonial-card {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 20px 40px rgba(5, 150, 105, 0.15);
+      
+      .testimonial-stars {
+        .star {
+          animation: star-twinkle 0.5s ease-in-out;
+        }
+      }
+      
+      .employee-avatar {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+// Job modal
+.job-modal {
+  .modal-backdrop {
+    backdrop-filter: blur(12px);
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .modal-content {
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(5, 150, 105, 0.1);
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: theme('colors.awa-primary');
+      border-radius: 3px;
+      
+      &:hover {
+        background: theme('colors.awa-primary-dark');
+      }
+    }
+  }
+  
+  .close-button {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1) rotate(90deg);
+      background-color: theme('colors.red.100');
+      
+      svg {
+        color: theme('colors.red.600');
+      }
+    }
+  }
+  
+  .job-requirement,
+  .job-responsibility,
+  .job-benefit {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(5, 150, 105, 0.05);
+      transform: translateX(4px);
+      
+      .requirement-dot,
+      .responsibility-dot,
+      .benefit-dot {
+        transform: scale(1.5);
+        background-color: theme('colors.awa-primary-light');
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// Quick stats
+.quick-stats {
+  .stat-item {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.15);
+      
+      .stat-number {
+        transform: scale(1.1);
+        color: theme('colors.awa-primary-light');
+      }
+    }
+  }
+}
+
+// CTA section
+.cta-section {
+  .cta-contact-item {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-4px);
+      
+      .contact-icon {
+        transform: scale(1.2) rotate(10deg);
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .featured-jobs {
+    .job-card {
+      padding: 1.5rem;
+    }
+  }
+  
+  .job-filters {
+    .filter-tab {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .job-list {
+    .job-item {
+      .job-action {
+        position: static;
+        margin-top: 1rem;
+        width: 100%;
+      }
+    }
+  }
+  
+  .job-modal {
+    .modal-content {
+      margin: 1rem;
+      max-height: calc(100vh - 2rem);
+    }
+    
+    .modal-details-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .process-timeline {
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .featured-jobs {
+    .job-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .benefits-section {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .testimonials {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .job-modal {
+    .modal-content {
+      margin: 0.5rem;
+      border-radius: 1.5rem;
+    }
+  }
+  
+  .process-timeline {
+    .process-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .job-card,
+  .benefit-card,
+  .testimonial-card {
+    border: 2px solid #000;
+    
+    &:hover {
+      border-color: theme('colors.awa-primary');
+    }
+  }
+  
+  .filter-tab.active {
+    border: 2px solid #000;
+  }
+  
+  .modal-content {
+    border: 2px solid #000;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .job-card:hover,
+  .benefit-card:hover,
+  .testimonial-card:hover,
+  .job-item:hover {
+    transform: none;
+  }
+  
+  .badge-glow,
+  .urgent-pulse,
+  .pulse-process,
+  .star-twinkle,
+  .fadeIn,
+  .modalSlideIn {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Print styles
+@media print {
+  .careers-section {
+    .job-modal,
+    .filter-tabs,
+    .cta-section {
+      display: none;
+    }
+    
+    .job-card,
+    .job-item {
+      border: 1px solid #000;
+      page-break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+    
+    .featured-jobs {
+      .job-card {
+        page-break-inside: avoid;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+// Loading states
+.careers-loading {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #e0e0e0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Department-specific styling
+.department-badge {
+  &.development {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  }
+  
+  &.design {
+    background: linear-gradient(135deg, #ec4899, #be185d);
+  }
+  
+  &.management {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  }
+  
+  &.qa {
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+}

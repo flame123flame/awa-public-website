@@ -1,0 +1,127 @@
+<!-- header.component.html -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out"
+     [ngClass]="{
+       'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-awa-md': isScrolled,
+       'bg-white/90 backdrop-blur-md shadow-awa-sm': !isScrolled
+     }">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16 lg:h-20">
+      
+      <!-- Logo -->
+      <div class="flex items-center cursor-pointer group" (click)="scrollToSection('home')">
+        <div class="flex items-center space-x-3">
+          <!-- Logo Icon -->
+          <div class="w-10 h-10 bg-awa-gradient rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <!-- Company Name -->
+          <div class="flex flex-col">
+            <span class="text-2xl font-bold bg-gradient-to-r from-awa-primary to-awa-primary-light bg-clip-text text-transparent">
+              AWA
+            </span>
+            <span class="text-xs text-awa-gray font-medium hidden sm:block -mt-1">
+              IT Solutions
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:block">
+        <div class="flex items-center space-x-8">
+          <a *ngFor="let item of navigationItems" 
+             (click)="scrollToSection(item.id)" 
+             class="relative px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer group"
+             [ngClass]="{
+               'text-awa-primary': item.active,
+               'text-awa-dark hover:text-awa-primary': !item.active
+             }">
+            {{ item.label }}
+            <!-- Active Indicator -->
+            <span *ngIf="item.active" 
+                  class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-awa-primary rounded-full"></span>
+            <!-- Hover Effect -->
+            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-awa-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </a>
+          
+          <!-- CTA Button -->
+          <!-- <button (click)="scrollToSection('contact')" 
+                  class="ml-4 px-6 py-3 bg-awa-gradient text-white font-medium rounded-xl shadow-awa-md hover:shadow-awa-lg transform hover:scale-105 transition-all duration-300 hover:from-awa-primary-dark hover:to-awa-primary">
+            <span class="flex items-center space-x-2">
+              <span>ติดต่อเรา</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </span>
+          </button> -->
+        </div>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <div class="lg:hidden">
+        <button (click)="toggleMobileMenu()" 
+                class="relative p-3 rounded-xl transition-all duration-300 group text-awa-dark hover:bg-awa-light">
+          <!-- Hamburger Icon -->
+          <div class="w-6 h-6 relative">
+            <span class="absolute top-0 left-0 w-full h-0.5 bg-current transform transition-all duration-300"
+                  [ngClass]="{
+                    'rotate-45 translate-y-2.5': isMobileMenuOpen,
+                    'rotate-0 translate-y-0': !isMobileMenuOpen
+                  }"></span>
+            <span class="absolute top-2.5 left-0 w-full h-0.5 bg-current transition-all duration-300"
+                  [ngClass]="{
+                    'opacity-0': isMobileMenuOpen,
+                    'opacity-100': !isMobileMenuOpen
+                  }"></span>
+            <span class="absolute top-5 left-0 w-full h-0.5 bg-current transform transition-all duration-300"
+                  [ngClass]="{
+                    '-rotate-45 -translate-y-2.5': isMobileMenuOpen,
+                    'rotate-0 translate-y-0': !isMobileMenuOpen
+                  }"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile Navigation -->
+  <div class="lg:hidden transition-all duration-500 ease-out overflow-hidden"
+       [ngClass]="{
+         'max-h-screen opacity-100': isMobileMenuOpen,
+         'max-h-0 opacity-0': !isMobileMenuOpen
+       }">
+    <div class="bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-awa-lg">
+      <div class="px-4 py-6 space-y-2">
+        <!-- Mobile Menu Items -->
+        <a *ngFor="let item of navigationItems; let i = index" 
+           (click)="scrollToSection(item.id)" 
+           class="flex items-center px-4 py-4 rounded-xl transition-all duration-300 cursor-pointer group"
+           [style.animation-delay]="i * 50 + 'ms'"
+           [ngClass]="{
+             'bg-awa-gradient text-white shadow-awa-md': item.active,
+             'text-awa-dark hover:bg-awa-light hover:text-awa-primary': !item.active
+           }">
+          <span class="font-medium">{{ item.label }}</span>
+          <svg *ngIf="item.active" class="w-5 h-5 ml-auto" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </a>
+        
+        <!-- Mobile CTA Button -->
+        <div class="pt-4 mt-4 border-t border-gray-200">
+          <button (click)="scrollToSection('contact')" 
+                  class="w-full flex items-center justify-center px-6 py-4 bg-awa-gradient text-white font-medium rounded-xl shadow-awa-md hover:shadow-awa-lg transform hover:scale-105 transition-all duration-300 group">
+            <span class="flex items-center space-x-2">
+              <span>ติดต่อเรา</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

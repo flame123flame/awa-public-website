@@ -1,0 +1,326 @@
+/* about.component.scss */
+
+// About section specific animations
+.about-hero {
+  .stats-grid {
+    .stat-item {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-4px);
+        
+        .stat-number {
+          transform: scale(1.1);
+          color: theme('colors.awa-primary');
+        }
+      }
+    }
+  }
+}
+
+// Mission & Vision cards
+.mission-vision-cards {
+  .card {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(5, 150, 105, 0.1),
+        transparent
+      );
+      transition: left 0.8s;
+    }
+    
+    &:hover::before {
+      left: 100%;
+    }
+  }
+}
+
+// Core values animation
+.core-values {
+  .value-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 20px 25px -5px rgba(5, 150, 105, 0.1);
+      
+      .value-icon {
+        transform: scale(1.2) rotate(-1deg);
+      }
+      
+      .value-title {
+        color: theme('colors.awa-primary');
+      }
+    }
+  }
+}
+
+// Statistics counter animation
+.stats-section {
+  .stat-counter {
+    .number {
+      display: inline-block;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.15) rotateY(180deg);
+        color: theme('colors.awa-primary-light');
+      }
+    }
+    
+    .icon {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.2) rotate(360deg);
+      }
+    }
+  }
+}
+
+// Technology tags
+.tech-section {
+  .tech-category {
+    .tech-tag {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+      
+      &:hover {
+        transform: translateY(-2px);
+        
+        &::before {
+          left: 100%;
+        }
+      }
+    }
+  }
+}
+
+// Timeline styling
+.timeline {
+  .timeline-item {
+    .timeline-content {
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        transform: translateY(-50%);
+      }
+      
+      // Arrow pointing right (even items)
+      &.arrow-right::before {
+        left: -20px;
+        border-right-color: white;
+      }
+      
+      // Arrow pointing left (odd items)
+      &.arrow-left::before {
+        right: -20px;
+        border-left-color: white;
+      }
+    }
+    
+    .timeline-dot {
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        background: rgba(5, 150, 105, 0.2);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+// CTA section
+.cta-section {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(5, 150, 105, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(110, 231, 183, 0.05) 0%, transparent 50%);
+  
+  .cta-buttons {
+    .btn {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-2px) scale(1.02);
+      }
+      
+      &:active {
+        transform: translateY(0) scale(0.98);
+      }
+    }
+  }
+  
+  .contact-info {
+    .contact-item {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-4px);
+        
+        .contact-icon {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .timeline {
+    .timeline-item {
+      .timeline-content {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .core-values {
+    .value-card:hover {
+      transform: translateY(-4px);
+    }
+  }
+  
+  .stats-section {
+    .stat-counter {
+      .number:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .mission-vision-cards {
+    .card {
+      padding: 1.5rem;
+    }
+  }
+  
+  .tech-section {
+    .tech-tag {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .timeline {
+    .timeline-line {
+      background-color: #000;
+      width: 2px;
+    }
+    
+    .timeline-dot {
+      border: 3px solid #000;
+      background-color: #fff;
+    }
+  }
+  
+  .tech-tag {
+    border: 1px solid currentColor;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .core-values .value-card:hover,
+  .stats-section .stat-counter:hover,
+  .tech-section .tech-tag:hover,
+  .cta-section .btn:hover {
+    transform: none;
+  }
+  
+  .timeline-dot::before,
+  .pulse {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Print styles
+@media print {
+  .about-section {
+    .cta-section {
+      display: none;
+    }
+    
+    .timeline {
+      .timeline-line {
+        display: none;
+      }
+    }
+    
+    .animations,
+    .hover-effects {
+      display: none;
+    }
+  }
+}

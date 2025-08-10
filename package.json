@@ -3,11 +3,19 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "dev": "ng serve --host 0.0.0.0 --configuration=development",
+    "qa": "ng serve --host 0.0.0.0 --configuration=qa",
+    "sit": "ng serve --host 0.0.0.0 --configuration=sit",
+    "uat": "ng serve --host 0.0.0.0 --configuration=uat",
+    "prod": "ng serve --host 0.0.0.0 --configuration=production",
+    "build": "ng build --output-path=dist",
+    "build:dev": "ng build --base-href=/ --configuration=dev --build-optimizer --aot --output-hashing=all",
+    "build:qa": "ng build --base-href=/ --configuration=qa --build-optimizer --aot --output-hashing=all",
+    "build:sit": "ng build --base-href=/awa-public-website/ --configuration=sit --build-optimizer --aot --output-hashing=all",
+    "build:uat": "node build-version.js && ng build --base-href=/ --configuration=uat --build-optimizer --aot --output-hashing=all",
+    "build:prod": "node build-version.js && ng build --base-href=/ --configuration=production --build-optimizer --aot --output-hashing=all",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:awa-public-website": "node dist/awa-public-website/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {

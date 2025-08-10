@@ -1,0 +1,602 @@
+/* team.component.scss */
+
+// Team statistics animations
+.team-stats {
+  .stat-card {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        transparent,
+        rgba(5, 150, 105, 0.1),
+        transparent
+      );
+      transition: left 0.8s;
+    }
+    
+    &:hover {
+      transform: translateY(-8px);
+      border-color: theme('colors.awa-primary');
+      
+      &::before {
+        left: 100%;
+      }
+      
+      .stat-icon {
+        transform: scale(1.2) rotate(10deg);
+      }
+      
+      .stat-value {
+        transform: scale(1.1);
+        background: linear-gradient(
+          135deg,
+          theme('colors.awa-primary'),
+          theme('colors.awa-primary-light')
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+    }
+  }
+}
+
+// Leadership team cards
+.leadership-team {
+  .leader-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(5, 150, 105, 0.15);
+      
+      .leader-image {
+        transform: scale(1.1);
+      }
+      
+      .leader-name {
+        color: theme('colors.awa-primary');
+      }
+      
+      .leader-quote {
+        background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(16, 185, 129, 0.05));
+      }
+    }
+    
+    .leader-overlay {
+      background: linear-gradient(
+        135deg,
+        rgba(5, 150, 105, 0.9),
+        rgba(16, 185, 129, 0.8)
+      );
+    }
+    
+    .position-badge {
+      backdrop-filter: blur(8px);
+      animation: badge-float 3s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes badge-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+// Filter tabs
+.department-filters {
+  .filter-tab {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transition: left 0.6s;
+    }
+    
+    &:hover::before {
+      left: 100%;
+    }
+    
+    &.active {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.3);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid theme('colors.awa-primary');
+      }
+    }
+  }
+}
+
+// Team member cards
+.team-grid {
+  .member-card {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 20px 40px rgba(5, 150, 105, 0.15);
+      
+      .member-image {
+        transform: scale(1.1);
+      }
+      
+      .member-name {
+        color: theme('colors.awa-primary');
+      }
+      
+      .specialty-tag {
+        background-color: theme('colors.awa-primary');
+        color: white;
+      }
+    }
+    
+    .member-overlay {
+      background: linear-gradient(
+        135deg,
+        rgba(5, 150, 105, 0.8),
+        rgba(16, 185, 129, 0.8)
+      );
+    }
+    
+    .department-badge {
+      backdrop-filter: blur(8px);
+      position: relative;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        border-radius: inherit;
+        opacity: 0.8;
+        z-index: -1;
+      }
+    }
+  }
+}
+
+// Company culture cards
+.culture-section {
+  .culture-card {
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(5, 150, 105, 0.1),
+        transparent
+      );
+      transition: left 0.8s;
+    }
+    
+    &:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 20px 40px rgba(5, 150, 105, 0.15);
+      
+      &::before {
+        left: 100%;
+      }
+      
+      .culture-icon {
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 4px 8px rgba(5, 150, 105, 0.3));
+      }
+      
+      .culture-title {
+        color: theme('colors.awa-primary');
+      }
+    }
+  }
+}
+
+// Join team CTA
+.join-cta {
+  .benefit-item {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-4px);
+      
+      .benefit-icon {
+        transform: scale(1.2) rotate(10deg);
+      }
+    }
+  }
+}
+
+// Team member modal
+.member-modal {
+  .modal-backdrop {
+    backdrop-filter: blur(12px);
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .modal-content {
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(5, 150, 105, 0.1);
+      border-radius: 3px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: theme('colors.awa-primary');
+      border-radius: 3px;
+      
+      &:hover {
+        background: theme('colors.awa-primary-dark');
+      }
+    }
+  }
+  
+  .close-button {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.1) rotate(90deg);
+      background-color: theme('colors.red.100');
+      
+      svg {
+        color: theme('colors.red.600');
+      }
+    }
+  }
+  
+  .member-avatar {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: linear-gradient(45deg, theme('colors.awa-primary'), theme('colors.awa-primary-light'));
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0.3;
+    }
+  }
+  
+  .quote-section {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(5, 150, 105, 0.1),
+        transparent
+      );
+      transition: left 0.8s;
+    }
+    
+    &:hover::before {
+      left: 100%;
+    }
+  }
+  
+  .achievement-item {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(5, 150, 105, 0.05);
+      transform: translateX(4px);
+      
+      .achievement-dot {
+        transform: scale(1.5);
+        background-color: theme('colors.awa-primary-light');
+      }
+    }
+  }
+  
+  .social-link {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .leadership-team {
+    .leader-card {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .culture-section {
+    .culture-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .department-filters {
+    .filter-tab {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .member-modal {
+    .modal-content {
+      margin: 1rem;
+      max-height: calc(100vh - 2rem);
+    }
+    
+    .member-header {
+      flex-direction: column;
+      text-align: center;
+      
+      .member-avatar {
+        margin: 0 auto 1rem;
+      }
+    }
+  }
+  
+  .leadership-team {
+    .leader-card:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .team-stats {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .culture-section {
+    .culture-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .member-modal {
+    .modal-content {
+      margin: 0.5rem;
+      border-radius: 1.5rem;
+    }
+    
+    .modal-details-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .join-cta {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .member-card,
+  .leader-card,
+  .culture-card {
+    border: 2px solid #000;
+    
+    &:hover {
+      border-color: theme('colors.awa-primary');
+    }
+  }
+  
+  .filter-tab.active {
+    border: 2px solid #000;
+  }
+  
+  .modal-content {
+    border: 2px solid #000;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .member-card:hover,
+  .leader-card:hover,
+  .culture-card:hover,
+  .stat-card:hover {
+    transform: none;
+  }
+  
+  .member-image:hover,
+  .leader-image:hover {
+    transform: none;
+  }
+  
+  .badge-float,
+  .fadeIn,
+  .modalSlideIn {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Print styles
+@media print {
+  .team-section {
+    .member-modal,
+    .filter-tabs,
+    .join-cta {
+      display: none;
+    }
+    
+    .member-card,
+    .leader-card {
+      border: 1px solid #000;
+      page-break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+    
+    .leadership-team {
+      .leader-card {
+        page-break-inside: avoid;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+// Loading states
+.team-loading {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #e0e0e0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Special animations for department badges
+.department-badge {
+  &.leadership {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  }
+  
+  &.development {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  }
+  
+  &.design {
+    background: linear-gradient(135deg, #ec4899, #be185d);
+  }
+  
+  &.qa {
+    background: linear-gradient(135deg, #10b981, #059669);
+  }
+}
+
+// Specialty tags hover effects
+.specialty-tag {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+}

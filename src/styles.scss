@@ -1,8 +1,10 @@
+/* src/styles.scss - เพิ่มใน Global Styles */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 body {
   font-family: 'Inter', sans-serif;
@@ -11,7 +13,133 @@ body {
 }
 
 @layer components {
+  /* Primary Buttons */
   .btn-primary {
-    @apply bg-awa-blue text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium;
+    @apply bg-awa-primary text-white px-6 py-3 rounded-xl hover:bg-awa-primary-dark transition-all duration-300 font-medium shadow-awa-md hover:shadow-awa-lg transform hover:scale-105;
+  }
+  
+  .btn-primary-gradient {
+    @apply bg-awa-gradient text-white px-6 py-3 rounded-xl hover:from-awa-primary-dark hover:to-awa-primary transition-all duration-300 font-medium shadow-awa-md hover:shadow-awa-lg transform hover:scale-105;
+  }
+  
+  /* Secondary Buttons */
+  .btn-secondary {
+    @apply bg-white border-2 border-awa-primary text-awa-primary px-6 py-3 rounded-xl hover:bg-awa-primary hover:text-white transition-all duration-300 font-medium shadow-awa-sm hover:shadow-awa-md;
+  }
+  
+  .btn-secondary-light {
+    @apply bg-gray-50 border-2 border-awa-primary text-awa-primary px-6 py-3 rounded-xl hover:bg-awa-primary hover:text-white transition-all duration-300 font-medium;
+  }
+  
+  /* Outline Buttons */
+  .btn-outline {
+    @apply bg-transparent border border-awa-gray text-awa-gray px-6 py-3 rounded-xl hover:border-awa-primary hover:text-awa-primary transition-all duration-300 font-medium;
+  }
+  
+  /* Ghost Buttons */
+  .btn-ghost {
+    @apply bg-transparent text-awa-primary px-6 py-3 rounded-xl hover:bg-awa-light transition-all duration-300 font-medium;
+  }
+  
+  /* Navigation Links */
+  .nav-link {
+    @apply text-awa-gray hover:text-awa-primary transition-colors duration-300 cursor-pointer font-medium;
+  }
+  
+  .nav-link-active {
+    @apply text-awa-primary font-semibold;
+  }
+  
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl shadow-awa-md hover:shadow-awa-lg transition-all duration-300 p-6 border border-awa-light/50;
+  }
+  
+  .card-hover {
+    @apply bg-white rounded-2xl shadow-awa-md hover:shadow-awa-xl transition-all duration-300 p-6 border border-awa-light/50 hover:border-awa-accent/30 transform hover:-translate-y-1;
+  }
+  
+  /* Form Elements */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-awa-primary focus:border-awa-primary transition-all duration-300;
+  }
+  
+  .form-textarea {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-awa-primary focus:border-awa-primary transition-all duration-300 resize-none;
+  }
+  
+  .form-select {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-awa-primary focus:border-awa-primary transition-all duration-300 bg-white;
+  }
+  
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-awa-primary text-white;
+  }
+  
+  .badge-success {
+    @apply bg-awa-success text-white;
+  }
+  
+  .badge-warning {
+    @apply bg-awa-warning text-white;
+  }
+  
+  .badge-error {
+    @apply bg-awa-error text-white;
+  }
+  
+  .badge-light {
+    @apply bg-awa-light text-awa-primary;
+  }
+  
+  /* Text Styles */
+  .text-gradient {
+    @apply bg-gradient-to-r from-awa-primary to-awa-primary-light bg-clip-text text-transparent;
+  }
+  
+  .text-heading {
+    @apply font-bold text-awa-dark leading-tight;
+  }
+  
+  .text-subheading {
+    @apply font-semibold text-awa-gray leading-relaxed;
+  }
+  
+  /* Section Styles */
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Animation Classes */
+  .animate-fade-in-custom {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+  
+  .animate-slide-up-custom {
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  /* Hover Effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-awa-xl hover:shadow-awa-primary/25;
   }
 }
