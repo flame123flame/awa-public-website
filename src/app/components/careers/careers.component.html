@@ -1,49 +1,9 @@
 <!-- careers.component.html - Complete Version -->
 <section id="careers" class="relative bg-white overflow-hidden">
-  
-  <!-- Careers Hero -->
-  <div class="section-padding bg-gradient-to-br from-gray-50 to-white">
-    <div class="container-custom">
-      <div class="text-center space-y-6 mb-16">
-        <div class="inline-flex items-center px-4 py-2 bg-awa-primary/10 rounded-full border border-awa-primary/20">
-          <span class="w-2 h-2 bg-awa-primary rounded-full mr-3"></span>
-          <span class="text-sm font-medium text-awa-primary">Join Our Team</span>
-        </div>
-        
-        <h2 class="text-4xl lg:text-6xl font-bold text-awa-dark leading-tight">
-          <span class="block">ร่วมงานกับเรา</span>
-          <span class="block text-awa-primary">สร้างอนาคตด้วยกัน</span>
-        </h2>
-        
-        <p class="text-xl text-awa-gray max-w-3xl mx-auto leading-relaxed">
-          เข้าร่วมทีมงานที่มีความหลงใหลในเทคโนโลยีและพร้อมสร้างสรรค์สิ่งดีๆ ให้กับสังคม
-        </p>
-      </div>
-      
-      <!-- Quick Stats -->
-      <div class="grid md:grid-cols-4 gap-6 mb-16">
-        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
-          <div class="text-3xl font-bold text-awa-primary">{{ openPositions.length }}</div>
-          <div class="text-sm text-awa-gray">ตำแหน่งเปิดรับ</div>
-        </div>
-        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
-          <div class="text-3xl font-bold text-awa-primary">30+</div>
-          <div class="text-sm text-awa-gray">ทีมงานคุณภาพ</div>
-        </div>
-        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
-          <div class="text-3xl font-bold text-awa-primary">4.9/5</div>
-          <div class="text-sm text-awa-gray">ความพึงพอใจ</div>
-        </div>
-        <div class="text-center p-6 bg-white rounded-2xl shadow-awa-sm border border-gray-100 hover:shadow-awa-md transition-all duration-300 hover:-translate-y-1">
-          <div class="text-3xl font-bold text-awa-primary">95%</div>
-          <div class="text-sm text-awa-gray">อัตราคงอยู่</div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Featured Jobs -->
-  <div class="section-padding bg-white">
+  <div class=" bg-white">
     <div class="container-custom">
       <div class="text-center space-y-6 mb-16">
         <h3 class="text-3xl lg:text-4xl font-bold text-awa-dark">ตำแหน่งเด่น</h3>
@@ -319,110 +279,9 @@
     </div>
   </div>
 
-  <!-- Employee Testimonials -->
-  <div class="section-padding bg-white">
-    <div class="container-custom">
-      <div class="text-center space-y-6 mb-16">
-        <h3 class="text-3xl lg:text-4xl font-bold text-awa-dark">เสียงจากพนักงาน</h3>
-        <p class="text-lg text-awa-gray max-w-2xl mx-auto">ฟังประสบการณ์จากเพื่อนร่วมงานที่อยู่กับเรา</p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <div *ngFor="let testimonial of employeeTestimonials; let i = index" 
-             class="bg-white p-8 rounded-3xl shadow-awa-md hover:shadow-awa-lg transition-all duration-300 hover:-translate-y-2 border border-gray-100"
-             [style.animation-delay]="i * 0.2 + 's'"
-             [ngClass]="{'animate-slide-up-custom': isVisible}">
-          <div class="space-y-6">
-            
-            <!-- Rating Stars -->
-            <div class="flex space-x-1">
-              <span *ngFor="let star of [1,2,3,4,5]" 
-                    class="text-yellow-400 text-xl">
-                ⭐
-              </span>
-            </div>
-            
-            <!-- Testimonial Content -->
-            <blockquote class="text-awa-gray leading-relaxed italic">
-              "{{ testimonial.comment }}"
-            </blockquote>
-            
-            <!-- Employee Info -->
-            <div class="flex items-center space-x-4 pt-4 border-t border-gray-100">
-              <div class="text-3xl">{{ testimonial.avatar }}</div>
-              <div class="space-y-1">
-                <div class="font-semibold text-awa-dark">{{ testimonial.name }}</div>
-                <div class="text-sm text-awa-gray">{{ testimonial.position }}</div>
-                <div class="text-sm text-awa-primary font-medium">{{ testimonial.duration }} ที่ AWA</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- CTA Section -->
-  <div class="section-padding bg-gradient-to-br from-awa-primary/5 to-emerald-50/50">
-    <div class="container-custom text-center">
-      <div class="space-y-8 max-w-4xl mx-auto">
-        
-        <!-- CTA Content -->
-        <div class="space-y-6">
-          <h3 class="text-4xl lg:text-5xl font-bold text-awa-dark">
-            พร้อมที่จะเป็นส่วนหนึ่งของเรา?
-          </h3>
-          <p class="text-xl text-awa-gray leading-relaxed">
-            ส่ง Resume และมาร่วมสร้างอนาคตที่ดีในด้านเทคโนโลยีไปด้วยกัน
-          </p>
-        </div>
-        
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button (click)="scrollToSection('contact')" 
-                  class="btn-primary-gradient group">
-            <span class="flex items-center space-x-2">
-              <span>ส่ง Resume</span>
-              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </span>
-          </button>
-          
-          <button (click)="scrollToSection('contact')" 
-                  class="btn-secondary group">
-            <span class="flex items-center space-x-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-              <span>สอบถามเพิ่มเติม</span>
-            </span>
-          </button>
-        </div>
-        
-        <!-- Contact Info -->
-        <div class="pt-8 border-t border-awa-primary/20">
-          <div class="grid md:grid-cols-3 gap-6 text-center">
-            <div class="space-y-2 hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-              <div class="text-2xl">📧</div>
-              <div class="text-sm text-awa-gray">ส่ง Resume</div>
-              <div class="font-semibold text-awa-dark">hr-awa.co.th</div>
-            </div>
-            <div class="space-y-2 hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-              <div class="text-2xl">📞</div>
-              <div class="text-sm text-awa-gray">โทรสอบถาม</div>
-              <div class="font-semibold text-awa-dark">+66 2 xxx xxxx</div>
-            </div>
-            <div class="space-y-2 hover:-translate-y-1 transition-transform duration-300 cursor-pointer">
-              <div class="text-2xl">💼</div>
-              <div class="text-sm text-awa-gray">ดูตำแหน่งเพิ่ม</div>
-              <div class="font-semibold text-awa-dark">LinkedIn</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
 
   <!-- Job Detail Modal -->
   <div *ngIf="showJobModal && selectedJob" 

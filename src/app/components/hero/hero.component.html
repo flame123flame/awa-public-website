@@ -1,94 +1,229 @@
 <!-- hero.component.html -->
-<section id="home" class="hero-section">
+<section id="home" class="hero-section" [class.visible]="isVisible">
   
-  <!-- Subtle Green Background -->
+  <!-- Dynamic 3D Background -->
   <div class="hero-background">
-    <!-- Gradient Background -->
-    <div class="subtle-gradient"></div>
-    
-    <!-- Dot Pattern -->
-    <div class="dot-pattern"></div>
-    
-    <!-- Floating Blobs -->
-    <div class="floating-blobs">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
+    <!-- Gradient Layers -->
+    <div class="gradient-layers">
+      <div class="gradient-layer layer-1"></div>
+      <div class="gradient-layer layer-2"></div>
+      <div class="gradient-layer layer-3"></div>
     </div>
     
-    <!-- Gentle Shapes -->
-    <div class="gentle-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+    <!-- Floating 3D Objects -->
+    <div class="floating-objects">
+      <div class="float-object object-cube" *ngFor="let cube of floatingCubes; let i = index"
+           [style.left.%]="cube.x"
+           [style.top.%]="cube.y"
+           [style.animation-delay]="cube.delay + 's'">
+        <div class="cube-3d">
+          <div class="cube-face front"></div>
+          <div class="cube-face back"></div>
+          <div class="cube-face right"></div>
+          <div class="cube-face left"></div>
+          <div class="cube-face top"></div>
+          <div class="cube-face bottom"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Animated Grid -->
+    <div class="animated-grid">
+      <div class="grid-lines">
+        <div class="grid-line" *ngFor="let line of gridLines; let i = index"
+             [style.animation-delay]="i * 0.1 + 's'"></div>
+      </div>
+    </div>
+    
+    <!-- Particle System -->
+    <div class="particle-system">
+      <div class="particle" 
+           *ngFor="let particle of particles; trackBy: trackByParticle"
+           [style.left.%]="particle.x"
+           [style.top.%]="particle.y"
+           [style.animation-delay]="particle.delay + 's'"
+           [style.animation-duration]="particle.duration + 's'">
+      </div>
     </div>
   </div>
 
-  <!-- Main Content -->
-  <div class="hero-content">
+  <!-- Main Content Container -->
+  <div class="hero-container">
     
-    <!-- Badge -->
-    <div class="hero-badge" 
-         [ngClass]="{'show': isVisible}">
-      <div class="badge-glass">
-        <span class="badge-icon">{{ heroContent.badge.icon }}</span>
-        <span class="badge-text">{{ heroContent.badge.text }}</span>
-      </div>
-    </div>
-
-    <!-- Titles -->
-    <div class="hero-titles"
-         [ngClass]="{'show': isVisible}">
-      <h1 class="main-title">
-        <span class="title-gradient">{{ heroContent.mainTitle }}</span>
-        <span class="title-dark">{{ heroContent.subTitle }}</span>
-      </h1>
-    </div>
-
-    <!-- Description -->
-    <p class="hero-description"
-       [ngClass]="{'show': isVisible}">
-      {{ heroContent.description }}
-    </p>
-
-    <!-- Buttons -->
-    <div class="hero-buttons"
-         [ngClass]="{'show': isVisible}">
-      <button (click)="startProject()" 
-              class="btn-primary-green"
-              (keydown)="onKeyDown($event)">
-        {{ heroContent.buttons.primary }}
-      </button>
+    <!-- Content Section -->
+    <div class="hero-content">
       
-      <button (click)="viewServices()" 
-              class="btn-secondary-glass"
-              (keydown)="onKeyDown($event)">
-        {{ heroContent.buttons.secondary }}
-      </button>
+   
+      <!-- Animated Title -->
+      <div class="hero-titles" [class.animate]="isVisible">
+        <h1 class="main-title text-awa-primary">
+          <span class="title-word" 
+                *ngFor="let word of titleWords; let i = index"
+                [style.animation-delay]="(i * 0.2) + 's'">
+            {{ word }}
+          </span>
+        </h1>
+        <h2 class="sub-title">
+          <span class="subtitle-word"
+                *ngFor="let word of subtitleWords; let i = index"
+                [style.animation-delay]="(i * 0.15 + 1) + 's'">
+            {{ word }}
+          </span>
+        </h2>
+        
+        <!-- Title Decoration -->
+        <div class="title-decoration">
+          <div class="deco-line"></div>
+          <div class="deco-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="deco-line"></div>
+        </div>
+      </div>
+
+      <!-- Enhanced Description -->
+      <div class="hero-description" [class.animate]="isVisible">
+        <p class="description-text">{{ heroContent.description }}</p>
+        <div class="description-highlights">
+          <div class="highlight-item" 
+               *ngFor="let highlight of heroContent.highlights; let i = index"
+               [style.animation-delay]="(i * 0.2 + 2) + 's'">
+            <div class="highlight-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <span>{{ highlight }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Buttons -->
+      <div class="hero-actions" [class.animate]="isVisible">
+        <button class="btn-primary-3d" 
+                (click)="startProject()"
+                (keydown)="onKeyDown($event, startProject.bind(this))">
+          <div class="btn-content">
+            <span class="btn-text">{{ heroContent.buttons.primary }}</span>
+            <div class="btn-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="btn-faces">
+            <div class="btn-face front"></div>
+            <div class="btn-face back"></div>
+            <div class="btn-face right"></div>
+            <div class="btn-face left"></div>
+            <div class="btn-face top"></div>
+            <div class="btn-face bottom"></div>
+          </div>
+          <div class="btn-glow"></div>
+        </button>
+        
+      
+      </div>
+
+   
     </div>
 
-    <!-- Stats -->
-    <div class="hero-stats" 
-         *ngIf="heroContent.stats.length > 0"
-         [ngClass]="{'show': isVisible}">
-      <div *ngFor="let stat of heroContent.stats; trackBy: trackByStatIndex" 
-           class="stat-card">
-        <div class="stat-number">{{ stat.number }}</div>
-        <div class="stat-label">{{ stat.label }}</div>
+    <!-- 3D Visual Section -->
+    <div class="hero-visual">
+      <div class="visual-container">
+        
+        <!-- Central 3D Orb -->
+        <div class="central-orb-3d">
+          <div class="orb-container">
+            <div class="orb-core">
+              <div class="core-inner"></div>
+              <div class="core-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+              </div>
+            </div>
+            
+            <!-- Orbiting Elements -->
+            <div class="orbiting-elements">
+              <div class="orbit-path orbit-1">
+                <div class="orbit-element element-1">
+                  <div class="element-3d">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="orbit-path orbit-2">
+                <div class="orbit-element element-2">
+                  <div class="element-3d">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="orbit-path orbit-3">
+                <div class="orbit-element element-3">
+                  <div class="element-3d">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech Ecosystem -->
+        <div class="tech-ecosystem">
+          <div class="tech-node" 
+               *ngFor="let node of techNodes; let i = index"
+               [style.transform]="getNodeTransform(node)"
+               [style.animation-delay]="i * 0.3 + 's'">
+            <div class="node-3d">
+              <div class="node-content">
+                <div class="node-icon">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path [attr.d]="node.icon"/>
+                  </svg>
+                </div>
+                <div class="node-pulse"></div>
+              </div>
+              <div class="node-connection" *ngIf="i < techNodes.length - 1"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Hologram -->
+        <div class="hologram-effect">
+          <div class="hologram-layers">
+            <div class="holo-layer" *ngFor="let layer of hologramLayers; let i = index"
+                 [style.animation-delay]="i * 0.5 + 's'"></div>
+          </div>
+          <div class="scan-lines"></div>
+        </div>
+
+        <!-- Floating Data Points -->
+        <div class="data-points">
+          <div class="data-point" 
+               *ngFor="let point of dataPoints; let i = index"
+               [style.left.%]="point.x"
+               [style.top.%]="point.y"
+               [style.animation-delay]="point.delay + 's'">
+            <div class="point-inner">
+              <span>{{ point.value }}</span>
+            </div>
+            <div class="point-trail"></div>
+          </div>
+        </div>
       </div>
     </div>
-
   </div>
 
-  <!-- Scroll Indicator -->
-  <div class="scroll-indicator"
-       [ngClass]="{'show': isVisible}">
-    <div class="scroll-text">เลื่อนลงเพื่อดูบริการ</div>
-    <div class="scroll-animation">
-      <div class="scroll-wheel">
-        <div class="wheel-dot"></div>
-      </div>
-    </div>
-  </div>
 
 </section>

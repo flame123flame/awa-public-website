@@ -1,64 +1,8 @@
 <!-- contact.component.html -->
 <section id="contact" class="relative bg-white overflow-hidden">
   
-  <!-- Contact Hero -->
-  <div class="section-padding bg-gradient-to-br from-gray-50 to-white">
-    <div class="container-custom">
-      <div class="text-center space-y-6 mb-16">
-        <div class="inline-flex items-center px-4 py-2 bg-awa-primary/10 rounded-full border border-awa-primary/20">
-          <span class="w-2 h-2 bg-awa-primary rounded-full mr-3"></span>
-          <span class="text-sm font-medium text-awa-primary">Contact Us</span>
-        </div>
-        
-        <h2 class="text-4xl lg:text-6xl font-bold text-awa-dark leading-tight">
-          <span class="block">ติดต่อเรา</span>
-          <span class="block text-awa-primary">เริ่มต้นโปรเจคใหม่</span>
-        </h2>
-        
-        <p class="text-xl text-awa-gray max-w-3xl mx-auto leading-relaxed">
-          พร้อมให้คำปรึกษาและรับฟังความต้องการของคุณ เพื่อสร้างโซลูชันที่ตอบโจทย์ธุรกิจ
-        </p>
-      </div>
-    </div>
-  </div>
 
-  <!-- Contact Information Cards -->
-  <div class="section-padding bg-white">
-    <div class="container-custom">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <div *ngFor="let info of contactInfo; let i = index" 
-             class="group p-6 bg-white rounded-2xl shadow-awa-md hover:shadow-awa-lg transition-all duration-300 hover:-translate-y-2 border border-gray-100 cursor-pointer"
-             [style.animation-delay]="i * 0.1 + 's'"
-             [ngClass]="{'animate-slide-up-custom': isVisible}"
-             (click)="openLink(info.link)">
-          
-          <div class="space-y-6">
-            <!-- Icon -->
-            <div class="relative">
-              <div class="w-16 h-16 bg-gradient-to-br {{ info.color }} rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300 shadow-awa-md">
-                {{ info.icon }}
-              </div>
-              <div class="absolute inset-0 bg-gradient-to-br {{ info.color }} rounded-2xl opacity-20 group-hover:animate-ping"></div>
-            </div>
-            
-            <!-- Content -->
-            <div class="space-y-3">
-              <h3 class="text-xl font-bold text-awa-dark group-hover:text-awa-primary transition-colors duration-300">
-                {{ info.title }}
-              </h3>
-              <p class="text-sm text-awa-gray">{{ info.description }}</p>
-              <div class="space-y-1">
-                <div *ngFor="let detail of info.details" 
-                     class="text-sm text-awa-gray hover:text-awa-primary transition-colors duration-200">
-                  {{ detail }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Contact Form & Map Section -->
   <div class="section-padding bg-gradient-to-br from-gray-50 to-white">

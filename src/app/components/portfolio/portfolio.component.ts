@@ -221,36 +221,7 @@ export class PortfolioComponent implements OnInit {
     }
   ];
 
-  // Client testimonials for portfolio
-  clientTestimonials = [
-    {
-      client: 'TechMart Co., Ltd.',
-      person: 'คุณสมชาย ธุรกิจดี',
-      position: 'CEO',
-      comment: 'AWA ทำให้ธุรกิจเราเติบโตอย่างน่าทึ่ง ระบบอีคอมเมิร์ซที่พัฒนาให้ช่วยเพิ่มยอดขายได้ถึง 300%',
-      rating: 5,
-      avatar: '👨‍💼',
-      project: 'TechMart E-commerce Platform'
-    },
-    {
-      client: 'MedCenter Hospital',
-      person: 'ดร.สุมาลี รักษาใจ',
-      position: 'Chief Medical Officer',
-      comment: 'แอป HealthCare ที่ AWA พัฒนาให้ช่วยให้เราสามารถดูแลผู้ป่วยได้ดีขึ้น และลดเวลารอคิวลงมาก',
-      rating: 5,
-      avatar: '👩‍⚕️',
-      project: 'HealthCare Mobile App'
-    },
-    {
-      client: 'Corporate Solutions Ltd.',
-      person: 'คุณวิชัย จัดการดี',
-      position: 'Operations Director',
-      comment: 'ระบบ SmartOffice ทำให้การทำงานในออฟฟิศมีประสิทธิภาพมากขึ้น พนักงานสามารถทำงานได้สะดวกขึ้น',
-      rating: 5,
-      avatar: '👨‍💻',
-      project: 'SmartOffice Management System'
-    }
-  ];
+
 
   // Success metrics
   successMetrics = [

@@ -212,56 +212,6 @@ export class ServiceComponent implements OnInit {
     }
   ];
 
-  // Pricing Plans
-  pricingPlans = [
-    {
-      name: 'Starter',
-      description: 'เหมาะสำหรับธุรกิจเริ่มต้น',
-      price: '25,000',
-      period: 'เริ่มต้น',
-      features: [
-        'เว็บไซต์พื้นฐาน 5 หน้า',
-        'Responsive Design',
-        'Basic SEO',
-        'ดูแลฟรี 3 เดือน',
-        'SSL Certificate'
-      ],
-      popular: false,
-      color: 'border-gray-200'
-    },
-    {
-      name: 'Professional',
-      description: 'เหมาะสำหรับธุรกิจขนาดกลาง',
-      price: '75,000',
-      period: 'เริ่มต้น',
-      features: [
-        'เว็บแอปพลิเคชันครบครัน',
-        'Admin Panel',
-        'Database Integration',
-        'Advanced SEO',
-        'ดูแลฟรี 6 เดือน',
-        'Performance Optimization'
-      ],
-      popular: true,
-      color: 'border-awa-primary'
-    },
-    {
-      name: 'Enterprise',
-      description: 'เหมาะสำหรับธุรกิจขนาดใหญ่',
-      price: 'ตามโปรเจค',
-      period: 'ปรึกษา',
-      features: [
-        'ระบบที่กำหนดเอง',
-        'Cloud Infrastructure',
-        'API Integration',
-        'Advanced Security',
-        'ดูแลตลอดชีพ',
-        'Dedicated Support Team'
-      ],
-      popular: false,
-      color: 'border-purple-200'
-    }
-  ];
 
   setActiveService(index: number): void {
     this.activeService = index;

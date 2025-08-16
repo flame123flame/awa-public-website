@@ -96,40 +96,7 @@
     </div>
   </div>
 
-  <!-- Mission & Vision -->
-  <div class="section-padding bg-white">
-    <div class="container-custom">
-      <div class="grid lg:grid-cols-2 gap-12">
-        
-        <!-- Mission -->
-        <div class="p-8 bg-gradient-to-br from-awa-primary/5 to-emerald-50/50 rounded-3xl border border-awa-primary/10 hover:shadow-awa-lg transition-all duration-300">
-          <div class="space-y-6">
-            <div class="w-16 h-16 bg-awa-primary rounded-2xl flex items-center justify-center">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-awa-dark">พันธกิจ (Mission)</h3>
-            <p class="text-awa-gray leading-relaxed">{{ companyStory.mission }}</p>
-          </div>
-        </div>
-        
-        <!-- Vision -->
-        <div class="p-8 bg-gradient-to-br from-emerald-50/50 to-awa-primary/5 rounded-3xl border border-awa-primary/10 hover:shadow-awa-lg transition-all duration-300">
-          <div class="space-y-6">
-            <div class="w-16 h-16 bg-gradient-to-br from-awa-primary to-awa-primary-light rounded-2xl flex items-center justify-center">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-              </svg>
-            </div>
-            <h3 class="text-2xl font-bold text-awa-dark">วิสัยทัศน์ (Vision)</h3>
-            <p class="text-awa-gray leading-relaxed">{{ companyStory.vision }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Core Values -->
   <div class="section-padding bg-gray-50">
@@ -304,65 +271,5 @@
     </div>
   </div>
 
-  <!-- Call to Action -->
-  <div class="section-padding bg-gradient-to-br from-awa-primary/5 to-emerald-50/50">
-    <div class="container-custom text-center">
-      <div class="space-y-8 max-w-4xl mx-auto">
-        
-        <!-- CTA Content -->
-        <div class="space-y-6">
-          <h2 class="text-4xl lg:text-5xl font-bold text-awa-dark">
-            พร้อมที่จะเริ่มต้นโปรเจคใหม่?
-          </h2>
-          <p class="text-xl text-awa-gray leading-relaxed">
-            มาคุยกันเกี่ยวกับไอเดียของคุณ เราพร้อมช่วยทำให้มันเป็นจริง
-          </p>
-        </div>
-        
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button (click)="scrollToSection('contact')" 
-                  class="btn-primary-gradient group">
-            <span class="flex items-center space-x-2">
-              <span>เริ่มคุยกันเลย</span>
-              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-              </svg>
-            </span>
-          </button>
-          
-          <button (click)="scrollToSection('services')" 
-                  class="btn-secondary group">
-            <span class="flex items-center space-x-2">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-              </svg>
-              <span>ดูบริการของเรา</span>
-            </span>
-          </button>
-        </div>
-        
-        <!-- Contact Info -->
-        <div class="pt-8 border-t border-awa-primary/20">
-          <div class="grid md:grid-cols-3 gap-6 text-center">
-            <div class="space-y-2">
-              <div class="text-2xl">📞</div>
-              <div class="text-sm text-awa-gray">โทรหาเรา</div>
-              <div class="font-semibold text-awa-dark">+66 2 xxx xxxx</div>
-            </div>
-            <div class="space-y-2">
-              <div class="text-2xl">✉️</div>
-              <div class="text-sm text-awa-gray">อีเมลเรา</div>
-              <div class="font-semibold text-awa-dark">helloawa.co.th</div>
-            </div>
-            <div class="space-y-2">
-              <div class="text-2xl">📍</div>
-              <div class="text-sm text-awa-gray">มาหาเรา</div>
-              <div class="font-semibold text-awa-dark">กรุงเทพฯ</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </section>
