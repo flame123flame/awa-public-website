@@ -1,4 +1,4 @@
-<!-- hero.component.html - Subtle Green Theme -->
+<!-- hero.component.html -->
 <section id="home" class="hero-section">
   
   <!-- Subtle Green Background -->
@@ -55,12 +55,14 @@
     <div class="hero-buttons"
          [ngClass]="{'show': isVisible}">
       <button (click)="startProject()" 
-              class="btn-primary-green">
+              class="btn-primary-green"
+              (keydown)="onKeyDown($event)">
         {{ heroContent.buttons.primary }}
       </button>
       
-      <button (click)="viewPortfolio()" 
-              class="btn-secondary-glass">
+      <button (click)="viewServices()" 
+              class="btn-secondary-glass"
+              (keydown)="onKeyDown($event)">
         {{ heroContent.buttons.secondary }}
       </button>
     </div>
@@ -81,7 +83,7 @@
   <!-- Scroll Indicator -->
   <div class="scroll-indicator"
        [ngClass]="{'show': isVisible}">
-    <div class="scroll-text">เลื่อนลงเพื่อดูเพิ่มเติม</div>
+    <div class="scroll-text">เลื่อนลงเพื่อดูบริการ</div>
     <div class="scroll-animation">
       <div class="scroll-wheel">
         <div class="wheel-dot"></div>
