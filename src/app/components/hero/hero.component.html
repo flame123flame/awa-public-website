@@ -56,16 +56,10 @@
    
       <!-- Animated Title -->
       <div class="hero-titles" [class.animate]="isVisible">
-        <h1 class="main-title text-awa-primary">
-          <span class="title-word" 
-                *ngFor="let word of titleWords; let i = index"
-                [style.animation-delay]="(i * 0.2) + 's'">
-            {{ word }}
-          </span>
-        </h1>
+       
         <h2 class="sub-title">
           <span class="subtitle-word"
-                *ngFor="let word of subtitleWords; let i = index"
+                *ngFor="let word of titleWords; let i = index"
                 [style.animation-delay]="(i * 0.15 + 1) + 's'">
             {{ word }}
           </span>
@@ -88,42 +82,14 @@
           <div class="highlight-item" 
                *ngFor="let highlight of heroContent.highlights; let i = index"
                [style.animation-delay]="(i * 0.2 + 2) + 's'">
-            <div class="highlight-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
+          
             <span>{{ highlight }}</span>
           </div>
         </div>
       </div>
 
       <!-- Interactive Buttons -->
-      <div class="hero-actions" [class.animate]="isVisible">
-        <button class="btn-primary-3d" 
-                (click)="startProject()"
-                (keydown)="onKeyDown($event, startProject.bind(this))">
-          <div class="btn-content">
-            <span class="btn-text">{{ heroContent.buttons.primary }}</span>
-            <div class="btn-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
-              </svg>
-            </div>
-          </div>
-          <div class="btn-faces">
-            <div class="btn-face front"></div>
-            <div class="btn-face back"></div>
-            <div class="btn-face right"></div>
-            <div class="btn-face left"></div>
-            <div class="btn-face top"></div>
-            <div class="btn-face bottom"></div>
-          </div>
-          <div class="btn-glow"></div>
-        </button>
-        
-      
-      </div>
+     
 
    
     </div>
@@ -186,14 +152,14 @@
                [style.transform]="getNodeTransform(node)"
                [style.animation-delay]="i * 0.3 + 's'">
             <div class="node-3d">
-              <div class="node-content">
+              <!-- <div class="node-content">
                 <div class="node-icon">
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path [attr.d]="node.icon"/>
                   </svg>
                 </div>
                 <div class="node-pulse"></div>
-              </div>
+              </div> -->
               <div class="node-connection" *ngIf="i < techNodes.length - 1"></div>
             </div>
           </div>

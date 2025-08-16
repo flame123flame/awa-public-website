@@ -1,31 +1,28 @@
-/* header.component.scss */
-
-// Mobile menu item animations
 .mobile-menu-item {
-  animation: slideInLeft 0.3s ease-out forwards;
+  animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   opacity: 0;
-  transform: translateX(-20px);
+  transform: translateY(20px);
 }
 
-@keyframes slideInLeft {
+@keyframes slideInUp {
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-// Logo hover effect
+// Enhanced logo hover effects
 .logo-container {
   .logo-icon {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   &:hover .logo-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1) rotate(-3deg);
   }
 }
 
-// Navigation link effects
+// Enhanced navigation link effects
 .nav-link {
   position: relative;
   overflow: hidden;
@@ -40,10 +37,10 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(5, 150, 105, 0.1),
+      rgba(16, 185, 129, 0.1),
       transparent
     );
-    transition: left 0.5s;
+    transition: left 0.6s ease-out;
   }
   
   &:hover::before {
@@ -51,7 +48,7 @@
   }
 }
 
-// CTA Button effects
+// Enhanced CTA Button effects
 .cta-button {
   position: relative;
   overflow: hidden;
@@ -66,10 +63,10 @@
     background: linear-gradient(
       120deg,
       transparent,
-      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.4),
       transparent
     );
-    transition: left 0.6s;
+    transition: left 0.8s ease-out;
   }
   
   &:hover::before {
@@ -77,7 +74,19 @@
   }
 }
 
-// Responsive
+// Backdrop blur fallback
+@supports not (backdrop-filter: blur(12px)) {
+  nav {
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Enhanced responsive design
 @media (max-width: 1024px) {
   .nav-item {
     font-size: 0.875rem;
@@ -86,15 +95,41 @@
 
 @media (max-width: 768px) {
   .logo-text {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 }
 
-// Reduced motion support
+// Accessibility improvements
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+// Focus styles for accessibility
+.nav-link:focus,
+.cta-button:focus,
+button:focus {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+// Loading animation
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
 }

@@ -1,83 +1,87 @@
-<!-- header.component.html -->
-<nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out"
+<nav class="fixed top-0 w-full z-50 transition-all duration-700 ease-out"
      [ngClass]="{
-       'bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-awa-md': isScrolled,
-       'bg-white/90 backdrop-blur-md shadow-awa-sm': !isScrolled
+       'bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-lg shadow-gray-900/5': isScrolled,
+       'bg-white/80 backdrop-blur-md': !isScrolled
      }">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16 lg:h-20">
       
-      <!-- Logo -->
-      <div class="flex items-center cursor-pointer group" (click)="scrollToSection('home')">
+      <!-- Logo - Enhanced -->
+      <div class="flex items-center cursor-pointer group logo-container" (click)="scrollToSection('hero')">
         <div class="flex items-center space-x-3">
-          <!-- Logo Icon -->
-          <div class="w-10 h-10 bg-awa-gradient rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
+          <!-- Logo Icon - Enhanced -->
+          <div class="relative w-12 h-12 logo-icon">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-2xl opacity-80 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"></div>
+            <div class="relative w-full h-full bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500">
+              <svg class="w-7 h-7 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
           </div>
-          <!-- Company Name -->
+          <!-- Company Name - Enhanced -->
           <div class="flex flex-col">
-            <span class="text-2xl font-bold bg-gradient-to-r from-awa-primary to-awa-primary-light bg-clip-text text-transparent">
+            <span class="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent group-hover:from-emerald-500 group-hover:to-teal-500 transition-all duration-500">
               AWA
             </span>
-            <span class="text-xs text-awa-gray font-medium hidden sm:block -mt-1">
+            <span class="text-xs text-gray-600 font-medium hidden sm:block -mt-1 group-hover:text-emerald-600 transition-colors duration-300">
               IT Solutions
             </span>
           </div>
         </div>
       </div>
       
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation - Enhanced -->
       <div class="hidden lg:block">
-        <div class="flex items-center space-x-8">
-          <a *ngFor="let item of navigationItems" 
-             (click)="scrollToSection(item.id)" 
-             class="relative px-4 py-2 text-sm font-medium transition-all duration-300 cursor-pointer group"
+        <div class="flex items-center space-x-2">
+          <a *ngFor="let item of navigationItems; trackBy: trackByFn" 
+             (click)="scrollToSectionMenu(item.id,item)" 
+             class="relative px-4 py-2.5 text-sm font-medium transition-all duration-300 cursor-pointer group nav-link rounded-lg"
              [ngClass]="{
-               'text-awa-primary': item.active,
-               'text-awa-dark hover:text-awa-primary': !item.active
+               'text-emerald-600 bg-emerald-50 shadow-sm': item.active,
+               'text-gray-700 hover:text-emerald-600 hover:bg-emerald-50/50': !item.active
              }">
-            {{ item.label }}
-            <!-- Active Indicator -->
+            {{ item.label }} 
+            
+            <!-- Active Indicator - Enhanced -->
             <span *ngIf="item.active" 
-                  class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-awa-primary rounded-full"></span>
-            <!-- Hover Effect -->
-            <span class="absolute inset-x-0 -bottom-1 h-0.5 bg-awa-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                  class="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+            
+            <!-- Hover Effect - Enhanced -->
+            <span class="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-emerald-400 to-teal-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-full"></span>
           </a>
           
-          <!-- CTA Button -->
-          <!-- <button (click)="scrollToSection('contact')" 
-                  class="ml-4 px-6 py-3 bg-awa-gradient text-white font-medium rounded-xl shadow-awa-md hover:shadow-awa-lg transform hover:scale-105 transition-all duration-300 hover:from-awa-primary-dark hover:to-awa-primary">
-            <span class="flex items-center space-x-2">
-              <span>ติดต่อเรา</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- CTA Button - Enhanced -->
+          <button (click)="scrollToSection('contact')" 
+                  class="ml-6 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-emerald-600 hover:to-teal-700 cta-button group relative overflow-hidden">
+            <span class="relative z-10 flex items-center space-x-2">
+              <span>ปรึกษาฟรี</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </span>
-          </button> -->
+          </button>
         </div>
       </div>
       
-      <!-- Mobile menu button -->
+      <!-- Mobile menu button - Enhanced -->
       <div class="lg:hidden">
         <button (click)="toggleMobileMenu()" 
-                class="relative p-3 rounded-xl transition-all duration-300 group text-awa-dark hover:bg-awa-light">
-          <!-- Hamburger Icon -->
+                class="relative p-3 rounded-xl transition-all duration-300 group text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">
+          <!-- Hamburger Icon - Enhanced -->
           <div class="w-6 h-6 relative">
-            <span class="absolute top-0 left-0 w-full h-0.5 bg-current transform transition-all duration-300"
+            <span class="absolute top-0 left-0 w-full h-0.5 bg-current transform transition-all duration-500 rounded-full"
                   [ngClass]="{
-                    'rotate-45 translate-y-2.5': isMobileMenuOpen,
+                    'rotate-45 translate-y-2.5 bg-emerald-600': isMobileMenuOpen,
                     'rotate-0 translate-y-0': !isMobileMenuOpen
                   }"></span>
-            <span class="absolute top-2.5 left-0 w-full h-0.5 bg-current transition-all duration-300"
+            <span class="absolute top-2.5 left-0 w-full h-0.5 bg-current transition-all duration-300 rounded-full"
                   [ngClass]="{
-                    'opacity-0': isMobileMenuOpen,
-                    'opacity-100': !isMobileMenuOpen
+                    'opacity-0 scale-0': isMobileMenuOpen,
+                    'opacity-100 scale-100': !isMobileMenuOpen
                   }"></span>
-            <span class="absolute top-5 left-0 w-full h-0.5 bg-current transform transition-all duration-300"
+            <span class="absolute top-5 left-0 w-full h-0.5 bg-current transform transition-all duration-500 rounded-full"
                   [ngClass]="{
-                    '-rotate-45 -translate-y-2.5': isMobileMenuOpen,
+                    '-rotate-45 -translate-y-2.5 bg-emerald-600': isMobileMenuOpen,
                     'rotate-0 translate-y-0': !isMobileMenuOpen
                   }"></span>
           </div>
@@ -86,35 +90,38 @@
     </div>
   </div>
   
-  <!-- Mobile Navigation -->
-  <div class="lg:hidden transition-all duration-500 ease-out overflow-hidden"
+  <!-- Mobile Navigation - Enhanced -->
+  <div class="lg:hidden transition-all duration-700 ease-out overflow-hidden"
        [ngClass]="{
          'max-h-screen opacity-100': isMobileMenuOpen,
          'max-h-0 opacity-0': !isMobileMenuOpen
        }">
-    <div class="bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-awa-lg">
-      <div class="px-4 py-6 space-y-2">
-        <!-- Mobile Menu Items -->
-        <a *ngFor="let item of navigationItems; let i = index" 
+    <div class="bg-white/95 backdrop-blur-xl border-t border-gray-200/50 shadow-2xl">
+      <div class="px-4 py-6 space-y-2 max-h-96 overflow-y-auto">
+        <!-- Mobile Menu Items - Enhanced -->
+        <a *ngFor="let item of navigationItems; let i = index; trackBy: trackByFn" 
            (click)="scrollToSection(item.id)" 
-           class="flex items-center px-4 py-4 rounded-xl transition-all duration-300 cursor-pointer group"
-           [style.animation-delay]="i * 50 + 'ms'"
+           class="flex items-center px-4 py-4 rounded-xl transition-all duration-500 cursor-pointer group mobile-menu-item"
+           [style.animation-delay]="i * 100 + 'ms'"
            [ngClass]="{
-             'bg-awa-gradient text-white shadow-awa-md': item.active,
-             'text-awa-dark hover:bg-awa-light hover:text-awa-primary': !item.active
+             'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg transform scale-105': item.active,
+             'text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 hover:transform hover:scale-105': !item.active
            }">
           <span class="font-medium">{{ item.label }}</span>
-          <svg *ngIf="item.active" class="w-5 h-5 ml-auto" fill="currentColor" viewBox="0 0 24 24">
+          <svg *ngIf="item.active" class="w-5 h-5 ml-auto animate-pulse" fill="currentColor" viewBox="0 0 24 24">
             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <svg *ngIf="!item.active" class="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
         </a>
         
-        <!-- Mobile CTA Button -->
-        <div class="pt-4 mt-4 border-t border-gray-200">
+        <!-- Mobile CTA Button - Enhanced -->
+        <div class="pt-6 mt-6 border-t border-gray-200">
           <button (click)="scrollToSection('contact')" 
-                  class="w-full flex items-center justify-center px-6 py-4 bg-awa-gradient text-white font-medium rounded-xl shadow-awa-md hover:shadow-awa-lg transform hover:scale-105 transition-all duration-300 group">
-            <span class="flex items-center space-x-2">
-              <span>ติดต่อเรา</span>
+                  class="w-full flex items-center justify-center px-6 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-500 group relative overflow-hidden">
+            <span class="relative z-10 flex items-center space-x-2">
+              <span>ปรึกษาฟรี</span>
               <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>

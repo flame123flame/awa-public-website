@@ -8,15 +8,7 @@ interface HeroContent {
   subTitle: string;
   description: string;
   highlights: string[];
-  buttons: {
-    primary: string;
-    secondary: string;
-  };
-  stats: Array<{
-    number: string;
-    label: string;
-    target: number;
-  }>;
+ 
 }
 
 interface FloatingCube {
@@ -97,27 +89,15 @@ export class HeroComponent implements OnInit, OnDestroy {
   private intersectionObserver?: IntersectionObserver;
 
   // Hero Content
-  heroContent: HeroContent = {
-    
-    mainTitle: 'นวัตกรรม',
-    subTitle: 'เทคโนโลยีเพื่อธุรกิจ',
-    description: 'พัฒนาโซลูชันเทคโนโลยีสารสนเทศที่ล้ำสมัย ด้วยทีมผู้เชี่ยวชาญและเครื่องมือที่ทันสมัย เพื่อขับเคลื่อนธุรกิจของคุณไปสู่อนาคต',
+
+heroContent: HeroContent = {
+    mainTitle: 'เปลี่ยนธุรกิจคุณให้แกร่งด้วยเทคโนโลยี ',
+    subTitle: 'เปลี่ยนธุรกิจคุณให้แกร่งด้วยเทคโนโลยี',
+    description: 'หยุดเสียเวลากับระบบที่ช้า ข้อมูลหาย และค่าใช้จ่ายไอทีที่บานปลาย เราสร้างโซลูชันที่เพิ่มรายได้ ลดต้นทุน และทำให้ทีมคุณทำงานได้เร็วขึ้น 3 เท่า',
     highlights: [
-      'ปรึกษาและวิเคราะห์ฟรี',
-      'ทีมพัฒนามืออาชีพ',
-      'รับประกันคุณภาพ 100%',
-      'บริการหลังการขาย 24/7'
+      '👨‍💻 ทีมเทคนิคระดับ Senior', '🎯 Go-Live รับประกันสำเร็จ', '📞 Hotline เฉพาะคุณ', '💡 Feature Request รับฟังทุกความต้องการ'
     ],
-    buttons: {
-      primary: 'เริ่มต้นโปรเจค',
-      secondary: 'ดูผลงาน'
-    },
-    stats: [
-      { number: '500+', label: 'โปรเจคสำเร็จ', target: 500 },
-      { number: '300+', label: 'ลูกค้าพึงพอใจ', target: 300 },
-      { number: '10+', label: 'ปีประสบการณ์', target: 10 },
-      { number: '40+', label: 'ผู้เชี่ยวชาญ', target: 40 }
-    ]
+  
   };
 
   constructor(
@@ -180,15 +160,14 @@ export class HeroComponent implements OnInit, OnDestroy {
     ];
 
     // Initialize data points
-    this.dataPoints = [
-      { x: 25, y: 20, value: '99.9%', delay: 1 },
-      { x: 75, y: 15, value: 'Real-time', delay: 2 },
-      { x: 20, y: 80, value: '24/7', delay: 3 },
-      { x: 80, y: 85, value: 'Secure', delay: 4 }
-    ];
-
+this.dataPoints = [
+  { x: 25, y: 20, value: 'Time-Saving', delay: 1 },
+  { x: 75, y: 15, value: 'Cost-Effective', delay: 2 },
+  { x: 20, y: 80, value: 'Scalable', delay: 3 },
+  { x: 80, y: 85, value: 'Reliable', delay: 4 }
+];
     // Initialize animated stats
-    this.animatedStats = this.heroContent.stats.map(() => '0');
+
   }
 
   private splitTitleWords(): void {
@@ -263,9 +242,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   private startStatsAnimation(): void {
     if (this.statsInterval) return;
 
-    this.heroContent.stats.forEach((stat, index) => {
-      this.animateStatNumber(index, stat.target, stat.number);
-    });
+   
   }
 
   private animateStatNumber(index: number, target: number, originalText: string): void {
@@ -565,7 +542,7 @@ export class HeroComponent implements OnInit, OnDestroy {
 
   // Data Management
   refreshStats(): void {
-    this.animatedStats = this.heroContent.stats.map(() => '0');
+  
     this.startStatsAnimation();
   }
 
